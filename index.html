@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ערב קריוקי בדיונות | שרים ונהנים</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7') center/cover;
+            min-height: 100vh;
+            color: white;
+        }
+
+        .neon-text {
+            text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #ff00de,
+                0 0 30px #ff00de,
+                0 0 40px #ff00de;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 20px #ff00de,
+                    0 0 30px #ff00de,
+                    0 0 40px #ff00de;
+            }
+
+            to {
+                text-shadow: 0 0 2px #fff,
+                    0 0 5px #fff,
+                    0 0 10px #ff00de,
+                    0 0 15px #ff00de,
+                    0 0 20px #ff00de;
+            }
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .schedule-item {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-right: 5px solid #ff00de;
+            transition: transform 0.3s;
+        }
+
+        .schedule-item h4,
+        .schedule-item p {
+            color: #333;
+        }
+
+        .schedule-item:hover {
+            transform: translateX(-10px);
+        }
+
+        .time-badge {
+            background: #ff00de;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .checklist-item {
+            background: white;
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .checklist-item.available {
+            border-right: 5px solid #28a745;
+        }
+
+        .checklist-item.needed {
+            border-right: 5px solid #dc3545;
+        }
+
+        .budget-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            height: 100%;
+            transition: transform 0.3s;
+        }
+
+        .budget-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .price-tag {
+            color: #ff00de;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .equipment-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .equipment-title {
+            color: #ff00de;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ff00de;
+        }
+
+        .budget-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .budget-title {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .budget-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .budget-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body class="bg-dark">
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h1 class="display-2 mb-4 neon-text">✨ ערב קריוקי בדיונות ✨</h1>
+                    <p class="lead mb-4 floating">
+                        🎤 הערב שבו כולנו כוכבי רוק! 🌟
+                    </p>
+                    <div class="mb-5">
+                        <div class="h3 mb-4">
+                            <span class="badge bg-primary bg-opacity-75 me-2">🎵 היום</span>
+                            <span class="badge bg-danger bg-opacity-75 me-2">🕗 20:00</span>
+                            <span class="badge bg-success bg-opacity-75">🏖️ דיונות חולון</span>
+                        </div>
+                    </div>
+
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-4">
+                            <div class="info-card">
+                                <h3>🎸 מה מחכה לכם?</h3>
+                                <ul class="list-unstyled">
+                                    <li>🎸 מערכת קריוקי מקצועית</li>
+                                    <li>🍻 אלכוהול ושתייה קלה</li>
+                                    <li>🌅 שקיעה מדהימה בדיונות</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="info-card">
+                                <h3>🎯 למה לבוא?</h3>
+                                <ul class="list-unstyled">
+                                    <li>🎤 להיות כוכבים לערב אחד</li>
+                                    <li>👥 לפגוש חברים חדשים</li>
+                                    <li>🎉 חוויה בלתי נשכחת</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="info-card">
+                                <h3>👥 מי המארגנים?</h3>
+                                <ul class="list-unstyled">
+                                    <li>🎸 לאון - מפיק ומפעיל הקריוקי</li>
+                                    <li>🎹 אורי - שותף ומפעיל הקריוקי</li>
+                                    <li>🎧 מאור - ציוד ומפעיל הקריוקי</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cta-buttons">
+                        <a href="#details" class="btn btn-outline-light btn-lg me-3 mb-3">
+                            <span class="h5">📍 איך מגיעים?</span>
+                        </a>
+                        <a href="#rsvp" class="btn btn-primary btn-lg mb-3">
+                            <span class="h5">🎯 בואו נעשה מזה ערב מטורף!</span>
+                        </a>
+                        <div class="mt-3">
+                            <a href="https://chat.whatsapp.com/GA9eABA9qK7FCKwtwhZXAW" target="_blank"
+                                class="btn btn-success btn-lg">
+                                <span class="h5">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                                        alt="WhatsApp" style="height: 1.5rem; margin-left: 0.5rem;">
+                                    הצטרפו לקבוצת הוואטסאפ
+                                </span>
+                            </a>
+                            <p class="small text-light mt-2">
+                                💬 הצטרפו לקבוצה לעדכונים שוטפים ופרטים נוספים
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <p class="lead text-warning">
+                            ⚡ מספר המקומות מוגבל! ⚡
+                        </p>
+                        <p class="small text-light opacity-75">
+                            הביאו חברים, אנרגיות טובות וגרון חזק! 🎵
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section id="details" class="py-5 text-white">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="info-card">
+                        <h3>📍 איך מגיעים?</h3>
+                        <div class="location-details mb-4">
+                            <h5>🏖️ דיונות חולון</h5>
+                            <p class="mb-2">מאחורי ימית 2000, ליד החניה הדרומית</p>
+                            <div class="directions mb-3">
+                                <h6>🚗 הוראות הגעה:</h6>
+                                <ol>
+                                    <li>נכנסים לחניה הדרומית של ימית 2000</li>
+                                    <li>ממשיכים ישר עד סוף החניה</li>
+                                    <li>פונים שמאלה לכיוון הדיונות</li>
+                                    <li>תראו אותנו עם התאורה והמוזיקה! 🎵</li>
+                                </ol>
+                            </div>
+                            <div class="contact-info mb-3">
+                                <h6>📱 ליצירת קשר:</h6>
+                                <p>לאון: 054-3285967</p>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="https://waze.com/ul?ll=31.123,34.456&navigate=yes" target="_blank"
+                                    class="btn btn-primary">
+                                    <i class="fab fa-waze"></i> נווט ב-Waze
+                                </a>
+                                <a href="https://maps.app.goo.gl/srsDcJsnvR2j26qx7" target="_blank"
+                                    class="btn btn-success">
+                                    <i class="fas fa-map-marker-alt"></i> Google Maps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="info-card">
+                        <h3>🎒 צ'ק ליסט למשתתף</h3>
+                        <div class="checklist-content">
+                            <div class="mb-4">
+                                <h5>👕 לבוש מומלץ:</h5>
+                                <ul class="list-unstyled">
+                                    <li>✅ בגדים נוחים ולא יקרים (יכול להתלכלך מהחול)</li>
+                                    <li>✅ נעליים סגורות או סנדלים חזקים</li>
+                                    <li>✅ סווטשירט/ג'קט (בערב יכול להיות קריר)</li>
+                                </ul>
+                            </div>
+                            <div class="mb-4">
+                                <h5>🎵 ציוד אישי מומלץ:</h5>
+                                <ul class="list-unstyled">
+                                    <li>✅ מחצלת או כיסא מתקפל לישיבה</li>
+                                    <li>✅ בקבוק מים אישי</li>
+                                    <li>✅ פנס או תאורה אישית</li>
+                                    <li>✅ כוס רב פעמית (נשמור על הסביבה! 🌱)</li>
+                                </ul>
+                            </div>
+                            <div class="mb-4">
+                                <h5>🎉 אופציונלי:</h5>
+                                <ul class="list-unstyled">
+                                    <li>✨ אביזרי מסיבות מצחיקים</li>
+                                    <li>📸 מצלמה לתיעוד הערב</li>
+                                    <li>🎸 כלי נגינה אקוסטיים</li>
+                                </ul>
+                            </div>
+                            <div class="alert alert-info">
+                                <h6>💡 טיפ חשוב:</h6>
+                                <p class="mb-0">מומלץ להביא תיק קטן שנוח לשאת בדיונות.
+                                    אל תשכחו שאנחנו על חול!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="py-5 text-white">
+        <div class="container">
+            <h2 class="text-center mb-5">תכנית הערב</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="schedule-item" data-aos="fade-up">
+                        <span class="time-badge">20:00</span>
+                        <h4>התכנסות והכנות ראשונות</h4>
+                        <p>הגעה למקום, סידור הציוד והתארגנות ראשונית</p>
+                        <ul class="small text-muted">
+                            <li>הקמת מערכת הקריוקי והגברה</li>
+                            <li>סידור פינות ישיבה</li>
+                            <li>ארגון פינת השתייה והנשנושים</li>
+                        </ul>
+                    </div>
+                    <div class="schedule-item" data-aos="fade-up" data-aos-delay="100">
+                        <span class="time-badge">20:30</span>
+                        <h4>פתיחת הקריוקי</h4>
+                        <p>בואו לבחור את השיר שלכם ולהתחמם! 🎶</p>
+                        <ul class="small text-muted">
+                            <li>חימום הקול עם שירים קלילים</li>
+                            <li>הכרות עם מערכת הקריוקי</li>
+                            <li>רישום תור לשירים</li>
+                        </ul>
+                    </div>
+                    <div class="schedule-item" data-aos="fade-up" data-aos-delay="200">
+                        <span class="time-badge">22:00</span>
+                        <h4>שירים מצחיקים ומשותפים</h4>
+                        <p>מרימים את האווירה עם שירים שכולם מכירים! 🎉</p>
+                        <ul class="small text-muted">
+                            <li>שירי קריוקי קלאסיים</li>
+                            <li>דואטים מפתיעים</li>
+                            <li>תחרות הזמר המצחיק</li>
+                        </ul>
+                    </div>
+                    <div class="schedule-item" data-aos="fade-up" data-aos-delay="300">
+                        <span class="time-badge">23:30</span>
+                        <h4>שיר סיום חגיגי</h4>
+                        <p>סיום מרגש בהשתתפות כל הקהל! 🌟</p>
+                        <ul class="small text-muted">
+                            <li>בחירת שיר הסיום על ידי הקהל</li>
+                            <li>צילום קבוצתי</li>
+                            <li>סיכום חוויות מהערב</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center text-white mb-5">רשימת ציוד</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="equipment-section">
+                        <h3 class="equipment-title">✅ יש ברשותנו</h3>
+                        <div class="checklist-item available" data-aos="fade-up">
+                            <div>
+                                <h5 class="mb-0">רמקול קריוקי מקצועי</h5>
+                                <small>כולל מיקרופונים</small>
+                            </div>
+                        </div>
+                        <div class="checklist-item available" data-aos="fade-up">
+                            <div>
+                                <h5 class="mb-0">גנרטור</h5>
+                                <small>מוכן להפעלת האירוע</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="equipment-section">
+                        <h3 class="equipment-title">❌ צריך להשיג</h3>
+                        <div class="checklist-item needed" data-aos="fade-up">
+                            <div>
+                                <h5 class="mb-0">דלק לגנרטור</h5>
+                                <small>לפחות 10 ליטר</small>
+                            </div>
+                        </div>
+                        <div class="checklist-item needed" data-aos="fade-up">
+                            <div>
+                                <h5 class="mb-0">שתייה ופיצוחים</h5>
+                                <small>שתייה קלה, חריפה, חטיפים</small>
+                            </div>
+                        </div>
+                        <div class="checklist-item needed" data-aos="fade-up">
+                            <div>
+                                <h5 class="mb-0">תאורה ואביזרים</h5>
+                                <small>תאורה צבעונית, כובעים, משקפיים</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">תכנון הוצאות</h2>
+            <!-- Interactive Calculator -->
+            <div class="budget-section mb-4">
+                <h3 class="budget-title text-center">מחשבון הוצאות אינטראקטיבי</h3>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="form-group mb-4">
+                            <label for="participantsCount" class="form-label">מספר משתתפים:</label>
+                            <input type="range" class="form-range" id="participantsCount" min="5" max="30" value="20">
+                            <div class="text-center">
+                                <span id="participantsDisplay">20</span> משתתפים
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="calculatedBudget" class="mt-4">
+                    <!-- תוצאות החישוב יוצגו כאן -->
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="budget-section">
+                        <h3 class="budget-title">ציוד טכני</h3>
+                        <div class="price-tag mb-3">₪450-800</div>
+                        <ul class="budget-list">
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>רמקול קריוקי מקצועי (השכרה ליום)</span>
+                                <span class="badge bg-primary">₪300</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>גנרטור (השכרה ליום)</span>
+                                <span class="badge bg-primary">₪250</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>דלק לגנרטור (10 ליטר)</span>
+                                <span class="badge bg-primary">₪70</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>כבלים מאריכים (2 יחידות)</span>
+                                <span class="badge bg-primary">₪80</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>מיקרופון נוסף</span>
+                                <span class="badge bg-primary">₪100</span>
+                            </li>
+                        </ul>
+                        <div class="mt-3">
+                            <small class="text-success">💡 חיסכון אפשרי: שימוש בציוד קיים</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="budget-section">
+                        <h3 class="budget-title">מזון ושתייה</h3>
+                        <div class="price-tag mb-3">₪400-700</div>
+                        <h5 class="mt-3 mb-2">שתייה:</h5>
+                        <ul class="budget-list">
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>מים מינרלים (4 שישיות)</span>
+                                <span class="badge bg-primary">₪56</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>קולה (8 בקבוקי 1.5 ליטר)</span>
+                                <span class="badge bg-primary">₪64</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>ספרייט (4 בקבוקי 1.5 ליטר)</span>
+                                <span class="badge bg-primary">₪32</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>פחיות XL (12 יחידות)</span>
+                                <span class="badge bg-primary">₪48</span>
+                            </li>
+                        </ul>
+                        <h5 class="mt-3 mb-2">חטיפים ונשנושים:</h5>
+                        <ul class="budget-list">
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>במבה/ביסלי (10 חבילות)</span>
+                                <span class="badge bg-primary">₪50</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>צ'יפס (6 חבילות גדולות)</span>
+                                <span class="badge bg-primary">₪60</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>פיצוחים מעורבים (2 ק"ג)</span>
+                                <span class="badge bg-primary">₪80</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>כוסות, צלחות וכלים חד פעמיים</span>
+                                <span class="badge bg-primary">₪40</span>
+                            </li>
+                        </ul>
+                        <div class="mt-3">
+                            <small class="text-success">💡 חיסכון אפשרי: כל אחד מביא משהו</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <div class="budget-section">
+                        <h3 class="budget-title">אביזרים והפתעות</h3>
+                        <div class="price-tag mb-3">₪100-200</div>
+                        <ul class="budget-list">
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>שרשרת לדים צבעונית (10 מטר)</span>
+                                <span class="badge bg-primary">₪40</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>פנסי לד ניידים (3 יחידות)</span>
+                                <span class="badge bg-primary">₪60</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>כובעי מסיבות (20 יחידות)</span>
+                                <span class="badge bg-primary">₪40</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>משקפיים זוהרות (10 יחידות)</span>
+                                <span class="badge bg-primary">₪30</span>
+                            </li>
+                        </ul>
+                        <div class="mt-3">
+                            <small class="text-success">💡 אופציונלי - לא חובה</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="budget-section mt-4">
+                <h3 class="budget-title text-center">סיכום עלויות</h3>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <ul class="budget-list">
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>ציוד טכני</span>
+                                <span class="badge bg-primary">₪800</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>מזון ושתייה</span>
+                                <span class="badge bg-primary">₪430</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>אביזרים והפתעות</span>
+                                <span class="badge bg-primary">₪170</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center fw-bold">
+                                <span>סך הכל</span>
+                                <span class="badge bg-warning text-dark">₪1,400</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center fw-bold">
+                                <span>עלות למשתתף (20 איש)</span>
+                                <span class="badge bg-success">₪70</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Song List Section -->
+    <section class="py-5 bg-dark text-white">
+        <div class="container">
+            <h2 class="text-center mb-5">רשימת שירים מומלצת 🎵</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h4>שירים לחימום</h4>
+                        <ul class="list-unstyled">
+                            <li>🎵 שיר של יום חולין - מתי כספי</li>
+                            <li>🎵 היי שקטה - משינה</li>
+                            <li>🎵 לשיר איתך - עברי לידר</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h4>להיטים בעברית</h4>
+                        <ul class="list-unstyled">
+                            <li>🎵 תותים - אריק איינשטיין</li>
+                            <li>🎵 מי אוהב אותך יותר ממני - עופרה חזה</li>
+                            <li>🎵 לך תדע - בני ברמן</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h4>להיטים באנגלית</h4>
+                        <ul class="list-unstyled">
+                            <li>🎵 Sweet Caroline - Neil Diamond</li>
+                            <li>🎵 I Will Survive - Gloria Gaynor</li>
+                            <li>🎵 Sweet Home Alabama - Lynyrd Skynyrd</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">טיפים לערב מוצלח 💡</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="budget-section h-100">
+                        <h4>🎤 טיפים לשירה</h4>
+                        <ul class="budget-list">
+                            <li>בחרו שירים שאתם מכירים היטב</li>
+                            <li>שתו מים בין השירים</li>
+                            <li>אל תחששו לטעות - כולם כאן בשביל להנות!</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="budget-section h-100">
+                        <h4>🏖️ טיפים למיקום</h4>
+                        <ul class="budget-list">
+                            <li>הביאו שמיכות או כסאות מתקפלים</li>
+                            <li>הצטיידו בפנסים או תאורה ניידת</li>
+                            <li>שימו לב לכיוון הרוח בהקמת הציוד</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="budget-section h-100">
+                        <h4>🎉 טיפים לאווירה</h4>
+                        <ul class="budget-list">
+                            <li>עודדו את כולם להשתתף</li>
+                            <li>צרו דואטים ספונטניים</li>
+                            <li>צלמו תמונות וסרטונים למזכרת</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 text-center text-white">
+        <p class="mb-0">נתראה בערב! 🎤✨</p>
+        <p class="small">לאון, אורי, מאור</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const participantsInput = document.getElementById('participantsCount');
+            const participantsDisplay = document.getElementById('participantsDisplay');
+            const calculatedBudget = document.getElementById('calculatedBudget');
+
+            // מחירי בסיס קבועים
+            const fixedCosts = {
+                equipment: {
+                    fuel: 70  // רק דלק לגנרטור
+                },
+                accessories: {
+                    ledStrip: 40,
+                    ledLights: 60,
+                    partyHats: 40,
+                    glasses: 30
+                }
+            };
+
+            // מחירים לפי קבוצות של 4 אנשים
+            const perGroupCosts = {
+                alcohol: {
+                    vodka: 80,        // בקבוק וודקה לכל 4 אנשים
+                    energyDrinks: 32  // 8 פחיות XL לכל 4 אנשים (4 ₪ לפחית)
+                }
+            };
+
+            // מחירים לאדם
+            const perPersonCosts = {
+                drinks: {
+                    water: 3,         // בקבוק מים 750מל לאדם
+                    softDrinks: 5,    // חצי בקבוק 1.5 ליטר קולה/ספרייט לאדם
+                },
+                snacks: {
+                    chips: 4,         // שקית צ'יפס בינונית לאדם
+                    bamba: 3,         // חבילת במבה לאדם
+                    nuts: 5,          // 100 גרם פיצוחים לאדם
+                    disposable: 2     // כוסות, צלחות וכו'
+                }
+            };
+
+            function calculateBudget(participants) {
+                // חישוב עלויות קבועות
+                const totalFixedEquipment = Object.values(fixedCosts.equipment).reduce((a, b) => a + b, 0);
+                const totalFixedAccessories = Object.values(fixedCosts.accessories).reduce((a, b) => a + b, 0);
+
+                // חישוב כמות הקבוצות (כל 4 אנשים)
+                const groups = Math.ceil(participants / 4);
+                const totalAlcohol = groups * (perGroupCosts.alcohol.vodka + perGroupCosts.alcohol.energyDrinks);
+
+                // חישוב עלויות משתנות לפי מספר משתתפים
+                const totalDrinks = participants * Object.values(perPersonCosts.drinks).reduce((a, b) => a + b, 0);
+                const totalSnacks = participants * Object.values(perPersonCosts.snacks).reduce((a, b) => a + b, 0);
+
+                const total = totalFixedEquipment + totalFixedAccessories + totalAlcohol + totalDrinks + totalSnacks;
+                const perPerson = Math.ceil(total / participants);
+
+                return {
+                    equipment: totalFixedEquipment,
+                    accessories: totalFixedAccessories,
+                    alcohol: totalAlcohol,
+                    drinks: totalDrinks,
+                    snacks: totalSnacks,
+                    total: total,
+                    perPerson: perPerson,
+                    details: {
+                        vodkaBottles: groups,
+                        energyDrinks: groups * 8,
+                        waterBottles: participants,
+                        softDrinks: Math.ceil(participants / 2),
+                        snackPacks: participants
+                    }
+                };
+            }
+
+            function updateBudgetDisplay() {
+                const participants = parseInt(participantsInput.value);
+                const budget = calculateBudget(participants);
+
+                calculatedBudget.innerHTML = `
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <h4 class="text-center mb-4">תקציב מחושב ל-${participants} משתתפים:</h4>
+                            <ul class="budget-list">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>ציוד טכני (גנרטור + רמקול)</span>
+                                    <span class="badge bg-success">קיים ✓</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>דלק לגנרטור</span>
+                                    <span class="badge bg-primary">₪${budget.equipment}</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>אלכוהול ואנרגיה (${budget.details.vodkaBottles} בקבוקי וודקה, ${budget.details.energyDrinks} XL)</span>
+                                    <span class="badge bg-primary">₪${budget.alcohol}</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>שתייה קלה (${budget.details.waterBottles} בקבוקי מים, ${budget.details.softDrinks} קולה/ספרייט)</span>
+                                    <span class="badge bg-primary">₪${Math.ceil(budget.drinks)}</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>חטיפים ופיצוחים (${budget.details.snackPacks} מנות)</span>
+                                    <span class="badge bg-primary">₪${Math.ceil(budget.snacks)}</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>אביזרים ותאורה</span>
+                                    <span class="badge bg-primary">₪${budget.accessories}</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center fw-bold">
+                                    <span>סך הכל</span>
+                                    <span class="badge bg-warning text-dark">₪${Math.ceil(budget.total)}</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center fw-bold">
+                                    <span>עלות למשתתף</span>
+                                    <span class="badge bg-success">₪${budget.perPerson}</span>
+                                </li>
+                            </ul>
+                            <div class="alert alert-info mt-3">
+                                <small>
+                                    💡 הערה: החישוב כולל:
+                                    <ul class="mb-0">
+                                        <li>בקבוק וודקה + 8 פחיות XL לכל 4 אנשים</li>
+                                        <li>בקבוק מים ושתייה קלה לכל אדם</li>
+                                        <li>מנת חטיפים ופיצוחים אישית</li>
+                                        <li>ציוד טכני (רמקול וגנרטור) - קיים</li>
+                                    </ul>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            participantsInput.addEventListener('input', function () {
+                participantsDisplay.textContent = this.value;
+                updateBudgetDisplay();
+            });
+
+            // הצגה ראשונית
+            updateBudgetDisplay();
+        });
+    </script>
+</body>
+
+</html>
